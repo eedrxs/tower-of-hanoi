@@ -5,7 +5,8 @@ let grid = nxnArray(n);
 
 
 function nxnArray(n) {
-    for (let array = [], i = 0; i < n; i++){
+    let array = [];
+    for (let i = 0; i < n; i++){
         array[i] = new Array(n);
     }
 
