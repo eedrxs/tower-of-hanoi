@@ -1,22 +1,13 @@
 'use strict';
 
 let n = +prompt("Input size of nxn array:", "4");
-let grid = makeArray(n);
-makeGrid(n);
+let grid = makeGrid(n);
 
 
 
 
 
 
-function makeArray(n) {
-  let array = [];
-  for (let i = 0; i < n; i++) {
-    array[i] = new Array(n);
-  }
-
-  return array;
-}
 
 
 
@@ -26,10 +17,10 @@ function makeGrid(n) {
   let i; let j;
 
 
-  let makeTdTags = () => {
-    for (j = 1; j <= n; j++) {
+  function makeTdTags() {
+    for (j = 0; j < n; j++) {
       let td = document.createElement('td');
-      td.id = `cell${i}${j}`;
+      td.id = `${i}${j}`;
       tdFragment.append(td);
     }
 
@@ -37,8 +28,8 @@ function makeGrid(n) {
   }
 
 
-  let makeTrTags = () => {
-    for (i = 1; i <= n; i++) {
+  function makeTrTags() {
+    for (i = 0; i < n; i++) {
       let tr = document.createElement('tr');
       tr.append(makeTdTags());
       trFragment.append(tr);
@@ -48,62 +39,79 @@ function makeGrid(n) {
   }
 
 
-  let table = document.createElement('table');
+  function makeArray(n) {
+    let array = [];
+    for (let i = 0; i < n; i++) {
+      array[i] = new Array(n);
+    }
 
-  table.className = 'grid';
+    return array;
+  }
+
+
+  let table = document.createElement('table');
+  table.setAttribute('id', 'grid');
   table.style.width = '300px';
   table.style.height = '300px';
   table.border = '1';
+  table.style.borderCollapse = 'collapse';
+  table.style.textAlign = 'center';
+
+  table.onclick = function(event) {
+    let target = event.target;
+
+    if (target.tagName != 'TD') return;
+
+    inputToGrid(target);
+  };
+
   table.append(makeTrTags());
-
   document.body.append(table);
+
+  return makeArray(n);
 }
 
 
+function inputToGrid(cell) {
+  cell.textContent ?
+  cell.textContent = '':
+  cell.textContent = 'O';
 
-
-
-
-
-function xmakeGrid(n) {
-  let trFragment = new DocumentFragment();
-  let tdFragment = new DocumentFragment();
-  let table = document.createElement('table');
-
-  console.log(table);
-
-  table.id = 'grid';
-  table.style.width = '300px';
-  table.style.height = '300px';
-  table.border = '1';
-
-  for (let i = 1; i <= n; i++) {
-    let tr = document.createElement('tr');
-
-    for (let j = 1; j <= n; j++) {
-      let td = document.createElement('td');
-      td.id = `cell${i}${j}`;
-      tdFragment.append(td);
-    }
-
-    trFragment.append(tr);
-  }
-
-  console.log(table);
-  document.body.append(table);
+  inputToArray(cell);
 }
 
 
-function ymakeGrid(n) {
-  let table = document.getElementById('grid');
+function inputToArray(cell) {
+  let id = cell.id;
 
-  for (let i = 1; i <= n; i++) {
-    table.insertAdjacentHTML('beforeend', '<tr>');
+  grid[+id.charAt(0)][+id.charAt(1)] ?
+  grid[+id.charAt(0)][+id.charAt(1)] = 0:
+  grid[+id.charAt(0)][+id.charAt(1)] = 1;
+}
 
-    for (let j = 1; j <= n; j++) {
-      table.insertAdjacentHTML('beforeend', `<td id = 'cell${i}${j}'>`);
+
+function gameOfLife() {
+  function determineFate(row, col) {
+    let i; let j;
+    let neighbours = 0;
+
+    for (i = -1; i < 2; i++) {
+      for (j = -1; j < 2; j++) {
+        if (i == 0 && j == 0) continue;
+        if (grid[row + i][col + j]) neighbours++;
+      }
     }
 
-    // table.insertAdjacentHTML('beforeend', '<\\tr>');
+    return (neighbours <= 1 || neighbours >= 4) ? 'willDie': 'willLive';
+
   }
+
+
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid.length; j++) {
+      grid[i][j].fate = determineFate(i, j);
+    }
+  }
+
+  debugger;
 }

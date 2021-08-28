@@ -2,3 +2,11 @@
   width: 300px;
   height: 300px;
 }
+
+.grid td {
+  border-collapse: collapse;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  text-align: center;
+}
