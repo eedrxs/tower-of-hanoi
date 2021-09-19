@@ -1,0 +1,50 @@
+/* * {
+    box-sizing: border-box;
+} */
+
+body {
+    margin: 0 100px;
+    font-family: 'Segoe UI';
+}
+
+#title {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+
+#title h1, p {
+    margin: 0;
+}
+
+#form {
+    margin-top: 50px;
+    position: relative;
+}
+
+#form *:not(label) {
+    width: 50px;
+    padding: 2px 6px;
+}
+
+#form div {
+    width: 200px;
+    position: absolute;
+    right: 0;
+    bottom: -6px;
+    text-align: right;
+}
+
+button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(0, 217, 255);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    right: 100px;
+    display: none;
+}

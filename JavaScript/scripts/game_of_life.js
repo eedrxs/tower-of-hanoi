@@ -13,7 +13,7 @@ let suffocationImg = '<img src="/images/suffocation.png" style="width: 25px; hei
 
 
 function getValue() {
-  n = +document.getElementById('nxn').value;
+  n = document.getElementById('nxn').value;
   grid = makeArray(n);
   initiateTable(makeGrid(n, 'grid'));
 }
