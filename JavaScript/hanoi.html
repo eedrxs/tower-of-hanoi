@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Towser of Hanoi</title>
+    <title>Tower of Hanoi</title>
     <link rel="stylesheet" href="/styles/hanoi.css" />
   </head>
 
   <body>
+    <script src="/scripts/hanoi.js"></script>
+
     <div id="title">
       <h1>Tower of Hanoi</h1>
       <p><em>by eedris</em></p>
@@ -15,7 +17,7 @@
       <label for="disks">Input number of disks:</label>
       <br />
       <input type="number" id="disks" value="3" min="1" max="10" />
-      <input type="button" value="GO!" />
+      <input type="button" value="GO!" onclick="go(+document.querySelector('input').value)" />
       <div>
         <label for="iterate">Iterate</label>
         <input type="checkbox" id="iterate" />
@@ -27,6 +29,5 @@
 
     <button>+</button>
 
-    <script src="/scripts/hanoi.js"></script>
   </body>
 </html>
