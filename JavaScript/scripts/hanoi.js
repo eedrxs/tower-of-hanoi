@@ -1,12 +1,23 @@
 'use strict';
 
-let noOfDisks;
+let input = {};
 let iterationBuffer = [];
 let colors;
 let move = 0;
 
 
-function go(n) {
+function go() {
+  input = {
+    diskNumber: +document.querySelector('#disks').value,
+    checked: document.querySelector('#iterate').checked,
+  }
+
+  setColor(input.diskNumber);
+}
+
+
+function setColor(n) {
+
   colors = new Array(n);
 
   {
