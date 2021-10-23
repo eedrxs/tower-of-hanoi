@@ -1,33 +1,478 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tower of Hanoi</title>
-    <link rel="stylesheet" href="/styles/hanoi.css" />
+    <title>Tower of Hanoi -- by eedris</title>
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/iterations.css" />
   </head>
 
   <body>
     <script src="/scripts/hanoi.js"></script>
 
-    <div id="title">
-      <h1>Tower of Hanoi</h1>
-      <p><em>by eedris</em></p>
+
+    <!-- Header and Input Section -->
+
+    <div id="title-div">
+        <h1>Tower of Hanoi</h1>
+        <p>by eedris</p>
     </div>
 
-    <div id="form">
-      <label for="disks">Input number of disks:</label>
-      <br />
-      <input type="number" id="disks" value="3" min="1" max="10" />
-      <input type="button" value="GO!" onclick="go(+document.querySelector('input').value)" />
-      <div>
-        <label for="iterate">Iterate</label>
-        <input type="checkbox" id="iterate" />
+    <div id="input-div">
+        <label for="disks">Input number of disks:</label><br>
+        <input type="number" name="disks" id="disks" min="1" max="10">
+        <button onclick="go()">GO!</button><br>
+        <label for="iterate">Iterate:</label>
+        <input type="checkbox" name="iterate" id="iterate">
+    </div>
+    <hr>
+
+
+    <!-- Iterations Section -->
+
+    <div class="iterations-div">
+      <div class="container">
+        <div>
+          <h3><span></span></h3>
+          <p><span></span><br><span></span><span></span></p>
+        </div>
+  
+        <div>
+          <p class="font-size-1">SOURCE</p>
+          <table>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-1">1</div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-2">2</div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-3">3</div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-4">4</div></td>
+            </tr>
+          </table>
+        </div>
+  
+        <div>
+          <p class="font-size-1">AUXILLARY</p>
+          <table>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+          </table>
+        </div>
+  
+        <div>
+          <p class="font-size-1">DESTINATION</p>
+          <table>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+  
+      <div class="container">
+        <div>
+          <h3>Move <span>1</span></h3>
+          <p>Disk <span>1</span> moved from<br> <span>Source</span> to <span>Auxillary</span></p>
+        </div>
+  
+        <div>
+          <p class="font-size-1">SOURCE</p>
+          <table>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-2">2</div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-3">3</div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-4">4</div></td>
+            </tr>
+          </table>
+        </div>
+  
+        <div>
+          <p class="font-size-1">AUXILLARY</p>
+          <table>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-1">1</div></td>
+            </tr>
+          </table>
+        </div>
+  
+        <div>
+          <p class="font-size-1">DESTINATION</p>
+          <table>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+  
+      <div class="container">
+        <div>
+          <h3>Move <span>2</span></h3>
+          <p>Disk <span>2</span> moved from<br> <span>Source</span> to <span>Destination</span></p>
+        </div>
+  
+        <div>
+          <p class="font-size-1">SOURCE</p>
+          <table>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-3">3</div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-4">4</div></td>
+            </tr>
+          </table>
+        </div>
+  
+        <div>
+          <p class="font-size-1">AUXILLARY</p>
+          <table>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-1">1</div></td>
+            </tr>
+          </table>
+        </div>
+  
+        <div>
+          <p class="font-size-1">DESTINATION</p>
+          <table>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div></div></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><div class="disk-2">2</div></td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
+    <hr>
 
-    <hr />
-    <div id="blank"></div>
 
-    <button>+</button>
+    <!-- Arrow at Bottom -->
 
+    <div id="arrow">
+        <div id="buffer">13</div>
+        <img src="/images/arrow.svg">
+    </div>
   </body>
 </html>
