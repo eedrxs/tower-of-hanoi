@@ -2,17 +2,17 @@
 
 let input = {};
 let iterationBuffer = [];
-let colors;
+let colors = {};
 let move = 0;
 
 
 function go() {
   input = {
-    diskNumber: +document.querySelector('#disks').value,
-    checked: document.querySelector('#iterate').checked,
+    disks: +document.querySelector('#disks').value,
+    iterate: document.querySelector('#iterate').checked
   }
 
-  setColor(input.diskNumber);
+  setColor(input.disks);
 }
 
 

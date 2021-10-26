@@ -3,11 +3,12 @@
 <html>
 <head>
   <link rel="stylesheet" href="/styles/header.css">
-  <link rel="stylesheet" href="/styles/iterations.css">
+  <link rel="stylesheet" href="/styles/test.css">
   <title>Hello, World!</title>
 </head>
 
 <body>
+  <script src="/scripts/test.js"></script>
   <!-- Header and Input Section -->
 
   <div id="title-div">
@@ -18,7 +19,7 @@
   <div id="input-div">
     <label for="disks">Input number of disks:</label><br>
     <input type="number" name="disks" id="disks" min="1" max="10">
-    <button onclick="">GO!</button><br>
+    <button onclick="hanoi.go()">GO!</button><br>
     <label for="iterate">Iterate:</label>
     <input type="checkbox" name="iterate" id="iterate">
   </div>
@@ -41,43 +42,43 @@
         <table>
           <tr>
             <td></td>
-            <td><div></div></td>
+            <td><div>1</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div></div></td>
+            <td><div>2</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div></div></td>
+            <td><div>3</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div></div></td>
+            <td><div>4</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div></div></td>
+            <td><div>5</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div></div></td>
+            <td><div>6</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="disk-1">1</div></td>
+            <td><div class="disk-1">7</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="disk-2">2</div></td>
+            <td><div class="disk-2">8</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="disk-3">3</div></td>
+            <td><div class="disk-3">9</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="disk-4">4</div></td>
+            <td><div class="disk-4">10</div></td>
           </tr>
         </table>
       </div>

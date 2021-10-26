@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hanoi Home</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        :root {
+            --primary-color: rgb(39, 40, 44);
+            --secondary-color: rgb(29, 30, 33);
+            --input-color: rgb(43, 44, 49);
+            --dim-white: rgba(255, 255, 255, 0.274);
+            --text-color: rgb(255, 255, 255);
+            --red: rgb(255, 93, 93);
+            --blue: #1692fe;
+            --yellow: rgb(255, 210, 104);
+            --green: rgb(54, 210, 145);
+            --font-size-1: 10px;
+            --font-size-2: 15px;
+            --font-size-3: 30px;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--primary-color);
+            font-family: Montserrat;
+        }
+
+
+
+        /* Title div */
+
+        #title-div {
+            width: 15em;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        #title-div h1 {
+            font-family: Nissma;
+            font-size: 2em;
+            color: var(--yellow);
+        }
+
+        #title-div p {
+            font-family: Montserrat;
+            font-size: 1em;
+            text-align: right;
+            right: 14px;
+            border-bottom: 2px dashed var(--green);
+            padding-bottom: 20px;
+        }
+
+
+
+        /* Input div */
+
+        #input-div {
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+
+        #input-div input, button, label {
+            margin-top: 20px;
+            top: 20px;
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title-div">
+        <h1>Tower of Hanoi</h1>
+        <p>by eedris</p>
+    </div>
+
+    <div id="input-div">
+        <label for="disks">Input number of disks:</label><br>
+        <input type="number" name="disks" id="disks" min="1" max="10">
+        <button onclick="">GO!</button>
+        <label for="iterate">Iterate:</label>
+        <input type="checkbox" name="iterate" id="iterate">
+    </div>
+    <hr />
+</body>
+
+</html>
