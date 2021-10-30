@@ -1,13 +1,14 @@
 export class Template {
-  constructor(message, currentIteration) {
+  constructor(message, disks, currentIteration) {
     this.container = document.createElement('div');
-    this.container2 = document.createElement('div');
-    this.tags = ` <div>
-                    <h3>${message || 'Move ' + currentIteration.move}</h3>
-                    <p>${message || 'Moved Disk ' + currentIteration.disk + ' from<br>' + currentIteration.from + ' to ' + currentIteration.to}</p>
-                  </div>
+    this.disks = disks;
+    this.tags = {
+      info: `<div>
+                  <h3>${message || 'Move ' + currentIteration.move}</h3>
+                  <p>${message || 'Moved Disk ' + currentIteration.disk + ' from<br>' + currentIteration.from + ' to ' + currentIteration.to}</p>
+                </div>`,
 
-                  <div id='source'>
+      disks:    `<div class='Source'>
                     <p class="font-size-1">SOURCE</p>
                     <table>
                       <tr>
@@ -53,7 +54,7 @@ export class Template {
                     </table>
                   </div>
 
-                  <div>
+                  <div class='Auxillary'>
                     <p class="font-size-1">AUXILLARY</p>
                     <table>
                       <tr>
@@ -99,7 +100,7 @@ export class Template {
                     </table>
                   </div>
 
-                  <div>
+                  <div class='Destination'>
                     <p class="font-size-1">DESTINATION</p>
                     <table>
                       <tr>
@@ -143,7 +144,8 @@ export class Template {
                         <td><div></div></td>
                       </tr>
                     </table>
-                  </div>`;
+                  </div>`
+    }
 
   }
     
@@ -155,7 +157,15 @@ export class Template {
   
     render() {
       this.container.className = 'container';
-      document.querySelector('.wrapper').insertAdjacentElement('afterbegin',this.tags);
+      this.container.insertAdjacentHTML('afterbegin',this.tags.info + this.tags.disks);
+
+      let div = this.container.querySelector('.Source').querySelectorAll('div');
+      for (let i = this.disks, j = 9; i >= 1;) {
+        div[j].className = `disk-${i}`;
+        div[j--].innerText = i--;
+      }
+
+      return this.container;
     }
   
     

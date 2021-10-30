@@ -1,15 +1,14 @@
-'use strict';
-
 import {Template} from './template.js';
 document.getElementById('go-button').onclick = () => hanoi.go();
 
-//let template;
 let hanoi = {
   disks: null,
   iterate: null,
   buffer: [],
   colors: null,
   move: 0,
+  currentItrn: 0,
+  prevRender: null,
   template: null,
   wrapper: document.querySelector('.wrapper'),
 
@@ -22,53 +21,63 @@ let hanoi = {
     }
   },
 
+  clone(item) {
+    let copy = {};
+    for (let key in item) copy[key] = item[key];
+    return copy;
+  },
+
 
   go() {
     this.disks = +document.querySelector('#disks').value;
     this.iterate = document.querySelector('#iterate').checked;
+
     if (this.disks > 10 || this.disks < 1) {
       alert('Only values between 1 - 10 allowed!');
       return;
     }
+
     this.setColor(this.disks);
     this.towerOfHanoi(this.disks, 'Source', 'Destination', 'Auxillary');
-    this.renderDisks();
-    this.activateArrow();
+    this.renderInitial();
 
-      //console.log(this);
-    
+    if (this.iterate) {
+      this.renderAll();
+      return;
+    }
+
+    this.activateArrow();
+  },
+
+
+  renderAll() {
+
   },
   
   
-  renderDisks() {
-    let template = new Template(' ');
-    template.container.className = 'container';
-    template.container.insertAdjacentHTML('afterbegin',template.tags);
-    
-    let div = template.container.querySelector('#source').querySelectorAll('div');
-    for (let i = this.disks, j = 9; i >= 1;){
-      div[j].className = `disk-${i}`;
-      div[j--].innerText = i--;
-    }
-    
-    this.wrapper.append(template.container);
-    template.initialRender = '';
-    
+  renderInitial() {
+    document.querySelector('#disks').disabled = true;
+    document.querySelector('#go-button').disabled = true;
+    document.querySelector('#iterate').disabled = true;
+
+    let template = new Template(' ', this.disks);
+    let renderResult = template.render();
+    this.prevRender = renderResult.innerHTML;
+    this.wrapper.append(renderResult);
+      console.log(this.prevRender);
       
-      template = new Template('', this.buffer[0]);
+      template = new Template('', null, this.buffer[0]);
       template.container.className = 'container';
-      template.container.insertAdjacentHTML('afterbegin',template.tags);
-      div = template.container.querySelector('#source').querySelectorAll('div');
-    for (let i = this.disks, j = 9; i >= 1;){
-      div[j].className = `disk-${i}`;
-      div[j--].innerText = i--;
-    }
+      template.container.insertAdjacentHTML('afterbegin',template.tags.info + template.tags.disks);
+      let div = template.container.querySelector('.Source').querySelectorAll('div');
+      for (let i = this.disks, j = 9; i >= 1;){
+        div[j].className = `disk-${i}`;
+        div[j--].innerText = i--;
+      }
     
     
     this.wrapper.append(template.container);
-    console.log(hanoi.buffer[0]);
     this.template = template;
-        console.log(template);
   },
 
 
@@ -79,7 +88,6 @@ let hanoi = {
     for (let i = 0; i < n; i++) {
       this.colors[i] = `hsl(${mix += hue}, 100%, 50%)`;
      }
-     return;
   },
 
 
@@ -96,6 +104,8 @@ let hanoi = {
   
   
   activateArrow() {
+    document.querySelector('#buffer').innerText = this.move;
+    document.querySelector('#iteration-hr').style.visibility = 'visible';
     let arrow = document.querySelector('#arrow');
     arrow.style.visibility = 'visible';
     arrow.addEventListener('click',this.renderNext);

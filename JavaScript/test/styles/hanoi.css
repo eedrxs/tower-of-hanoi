@@ -142,6 +142,6 @@ tr:first-child .disk-1 {
   left: calc(-260px / 2);
 }
 
-#arrow {
+#arrow, #iteration-hr {
   visibility: hidden;
 }
