@@ -2,13 +2,14 @@
 
 <html>
 <head>
-  <link rel="stylesheet" href="/styles/header.css">
-  <link rel="stylesheet" href="/styles/test.css">
-  <title>Hello, World!</title>
+  <link rel="stylesheet" href="/test/styles/header.css">
+  <link rel="stylesheet" href="/test/styles/hanoi.css">
+  <title>Tower of Hanoi</title>
 </head>
 
 <body>
-  <script src="/scripts/test.js"></script>
+  <script type="module" src="/test/scripts/test.js"></script>
+  <script type="module" src="/test/scripts/template.js"></script>
   <!-- Header and Input Section -->
 
   <div id="title-div">
@@ -19,11 +20,10 @@
   <div id="input-div">
     <label for="disks">Input number of disks:</label><br>
     <input type="number" name="disks" id="disks" min="1" max="10">
-    <button onclick="hanoi.go()">GO!</button><br>
+    <button id="go-button">GO!</button><br>
     <label for="iterate">Iterate:</label>
     <input type="checkbox" name="iterate" id="iterate">
   </div>
-
   <hr id="input-hr">
 
 
@@ -42,43 +42,43 @@
         <table>
           <tr>
             <td></td>
-            <td><div>1</div></td>
+            <td><div class="disk-1">1</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div>2</div></td>
+            <td><div class="disk-2">2</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div>3</div></td>
+            <td><div class="disk-3">3</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div>4</div></td>
+            <td><div class="disk-4">4</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div>5</div></td>
+            <td><div class="disk-5">5</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div>6</div></td>
+            <td><div class="disk-6">6</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="disk-1">7</div></td>
+            <td><div class="disk-7">7</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="disk-2">8</div></td>
+            <td><div class="disk-8">8</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="disk-3">9</div></td>
+            <td><div class="disk-9">9</div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="disk-4">10</div></td>
+            <td><div class="disk-10">10</div></td>
           </tr>
         </table>
       </div>
@@ -464,8 +464,16 @@
           </tr>
         </table>
       </div>
-    </div>
+    </div> 
   </div>
-  
+  <hr>
+
+
+  <!-- Arrow at Bottom -->
+
+  <div id="arrow">
+      <div id="buffer">13</div>
+      <img src="/images/arrow.svg">
+  </div>
 </body>
 </html>
