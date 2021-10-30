@@ -37,12 +37,14 @@ const hanoi = {
     this.renderInitial();
 
     if (this.iterate) {
+      this.initialScroll();
       this.renderAll();
       document.querySelector('#iteration-hr').style.visibility = 'visible';
       return;
     }
 
     this.activateArrow();
+    this.initialScroll();
   },
 
 
@@ -80,11 +82,10 @@ const hanoi = {
     this.prevRender = container.innerHTML;
     this.pos++;
 
-    if (this.iterate) {
-      if ((this.move - this.pos - 1) < 0) {
-        displayCopyright();
-        return;
-      }
+    if ((this.move - this.pos - 1) < 0) {
+      this.displayCopyright();
+      return;
+    } else if (this.iterate) {
       this.renderNext();
       return;
     }
@@ -130,18 +131,22 @@ const hanoi = {
     this.counter.innerText = this.move;
     document.querySelector('#iteration-hr').style.visibility = 'visible';
     this.arrow.style.visibility = 'visible';
-    this.arrow.addEventListener('click', () => hanoi.renderNext());
+    this.arrow.addEventListener('click', () => {hanoi.renderNext();
+      document.documentElement.scrollTop += 800;
+    });
     // this.arrow.addEventListener('dblclick', () => hanoi.renderAll());
   },
 
 
   displayCopyright() {
-    document.querySelector('#copyright').style.visibility = 'visible';
+    this.copyright.style.visibility = 'visible';
+    this.arrow.style.visibility = 'hidden';
+  },
+
+
+  initialScroll() {
+    document.documentElement.style.scrollBehavior = 'smooth';
+    document.documentElement.scrollTop += 200;
+    document.documentElement.style.scrollBehavior = '';
   }
 }
-
-
-
-
-
-

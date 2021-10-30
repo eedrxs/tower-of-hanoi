@@ -1,0 +1,5 @@
+{
+    "compile-hero.disable-compile-files-on-did-save-code": true,
+    "browser-preview.startUrl": "http://localhost:4000/",
+    "browser-preview.format": "png"
+}
