@@ -4,9 +4,9 @@ export class Template {
     this.disks = disks;
     this.tags = {
       info: `<div>
-                  <h3>${message || 'Move ' + currentIteration.move}</h3>
-                  <p>${message || 'Moved Disk ' + currentIteration.disk + ' from<br>' + currentIteration.from + ' to ' + currentIteration.to}</p>
-                </div>`,
+              <h3>${message || 'Move ' + currentIteration.move}</h3>
+              <p>${message || 'Moved Disk ' + currentIteration.disk + ' from<br>' + currentIteration.from + ' to ' + currentIteration.to}</p>
+            </div>`,
 
       disks:    `<div class='Source'>
                     <p class="font-size-1">SOURCE</p>
@@ -148,25 +148,18 @@ export class Template {
     }
 
   }
-    
   
-    classifyContainer() {
-      this.container.className = 'container';
-      document.querySelector('.wrapper').insertAdjacentElement('afterbegin',this.tags);
-    }
   
-    render() {
-      this.container.className = 'container';
-      this.container.insertAdjacentHTML('afterbegin',this.tags.info + this.tags.disks);
+  render() {
+    this.container.className = 'container';
+    this.container.insertAdjacentHTML('afterbegin',this.tags.info + this.tags.disks);
 
-      let div = this.container.querySelector('.Source').querySelectorAll('div');
-      for (let i = this.disks, j = 9; i >= 1;) {
-        div[j].className = `disk-${i}`;
-        div[j--].innerText = i--;
-      }
-
-      return this.container;
+    let div = this.container.querySelector('.Source').querySelectorAll('div');
+    for (let i = this.disks, j = 9; i >= 1;) {
+      div[j].className = `disk-${i}`;
+      div[j--].innerText = i--;
     }
-  
-    
+
+    return this.container;
   }
+}

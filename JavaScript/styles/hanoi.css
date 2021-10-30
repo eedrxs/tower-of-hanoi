@@ -10,7 +10,6 @@
   
   .container > div {
     height: 400px;
-    /* border-right: 1px solid var(--dim-white); */
   }
   
   .container > div:not(:first-child) {
@@ -91,3 +90,22 @@
     background-color: hsl(208, 99%, 35%);
     left: -100px;
   }
+
+  
+
+#copyright {
+  text-align: center;
+  color: hsl(225, 6%, 45%);
+  visibility: hidden;
+}
+
+#copyright p:first-child {
+  margin-top: 45px;
+  font-family: 'Open';
+  font-size: 1.3em;
+}
+
+#copyright p:nth-child(2) {
+  margin-top: 15px;
+  font-size: 0.72em;
+}

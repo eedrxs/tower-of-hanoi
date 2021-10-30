@@ -154,3 +154,26 @@ hr {
     top: -20px;
     right: -10px;
 }
+
+
+#arrow, #iteration-hr {
+    visibility: hidden;
+  }
+  
+  
+  #copyright {
+    text-align: center;
+    color: hsl(225, 6%, 45%);
+    visibility: hidden;
+  }
+  
+  #copyright p:first-child {
+    margin-top: 45px;
+    font-family: 'Open';
+    font-size: 1.3em;
+  }
+  
+  #copyright p:nth-child(2) {
+    margin-top: 15px;
+    font-size: 0.72em;
+  }

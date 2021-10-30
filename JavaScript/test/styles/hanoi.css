@@ -141,7 +141,3 @@ tr:first-child .disk-1 {
   background-color: hsl(208, 99%, 24%);
   left: calc(-260px / 2);
 }
-
-#arrow, #iteration-hr {
-  visibility: hidden;
-}

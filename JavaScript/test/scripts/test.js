@@ -1,17 +1,18 @@
 import {Template} from './template.js';
 document.getElementById('go-button').onclick = () => hanoi.go();
 
-let hanoi = {
+const hanoi = {
   disks: null,
   iterate: null,
   buffer: [],
   colors: null,
   move: 0,
-  currentItrn: 0,
+  pos: 0,
   prevRender: null,
-  template: null,
   wrapper: document.querySelector('.wrapper'),
-
+  counter: document.querySelector('#buffer'),
+  arrow: document.querySelector('#arrow'),
+  copyright: document.querySelector('#copyright'),
   Iteration: class {
     constructor(move, disk, from, to) {
       this.move = move;
@@ -19,12 +20,6 @@ let hanoi = {
       this.from = from;
       this.to = to;
     }
-  },
-
-  clone(item) {
-    let copy = {};
-    for (let key in item) copy[key] = item[key];
-    return copy;
   },
 
 
@@ -43,6 +38,7 @@ let hanoi = {
 
     if (this.iterate) {
       this.renderAll();
+      document.querySelector('#iteration-hr').style.visibility = 'visible';
       return;
     }
 
@@ -51,7 +47,49 @@ let hanoi = {
 
 
   renderAll() {
+    this.arrow.style.visibility = 'hidden';
+    this.iterate = true;
+    this.renderNext();
+  },
 
+
+  renderNext() {
+    let template = new Template('', null, this.buffer[this.pos]);
+    let message = template.tags.info;
+    let arrangement = this.prevRender.slice(this.prevRender.indexOf('</div>') + 6);
+    let container = document.createElement('div');
+
+    container.className = 'container';
+    container.insertAdjacentHTML('afterbegin', message + arrangement);
+    let disk = container.querySelector(`.${this.buffer[this.pos].from}`).querySelector(`.disk-${this.buffer[this.pos].disk}`);
+    
+    if (!(container.querySelector(`.${this.buffer[this.pos].to}`).querySelector('div[class^="disk"]'))) {
+      let div = container.querySelector(`.${this.buffer[this.pos].to}`).querySelectorAll('div');
+      div[9].className = disk.className;
+      div[9].innerText = disk.innerText;
+    } else {
+      let div = container.querySelector(`.${this.buffer[this.pos].to}`).querySelectorAll('div[class^="disk"]');
+      div[0].parentElement.parentElement.previousElementSibling.children[1].firstElementChild.className = disk.className;
+      div[0].parentElement.parentElement.previousElementSibling.children[1].firstElementChild.innerText = disk.innerText;
+    }
+
+    disk.className = '';
+    disk.innerText = '';
+    this.wrapper.append(container);
+    this.counter.innerText = this.move - this.pos - 1;
+    this.prevRender = container.innerHTML;
+    this.pos++;
+
+    if (this.iterate) {
+      if ((this.move - this.pos - 1) < 0) {
+        displayCopyright();
+        return;
+      }
+      this.renderNext();
+      return;
+    }
+
+    document.documentElement.scrollTop += 800;
   },
   
   
@@ -61,23 +99,8 @@ let hanoi = {
     document.querySelector('#iterate').disabled = true;
 
     let template = new Template(' ', this.disks);
-    let renderResult = template.render();
-    this.prevRender = renderResult.innerHTML;
-    this.wrapper.append(renderResult);
-      console.log(this.prevRender);
-      
-      template = new Template('', null, this.buffer[0]);
-      template.container.className = 'container';
-      template.container.insertAdjacentHTML('afterbegin',template.tags.info + template.tags.disks);
-      let div = template.container.querySelector('.Source').querySelectorAll('div');
-      for (let i = this.disks, j = 9; i >= 1;){
-        div[j].className = `disk-${i}`;
-        div[j--].innerText = i--;
-      }
-    
-    
-    this.wrapper.append(template.container);
-    this.template = template;
+    this.wrapper.append(template.render());
+    this.prevRender = template.container.innerHTML;
   },
 
 
@@ -104,21 +127,17 @@ let hanoi = {
   
   
   activateArrow() {
-    document.querySelector('#buffer').innerText = this.move;
+    this.counter.innerText = this.move;
     document.querySelector('#iteration-hr').style.visibility = 'visible';
-    let arrow = document.querySelector('#arrow');
-    arrow.style.visibility = 'visible';
-    arrow.addEventListener('click',this.renderNext);
-    arrow.addEventListener('dblclick',this.renderAll);
+    this.arrow.style.visibility = 'visible';
+    this.arrow.addEventListener('click', () => hanoi.renderNext());
+    // this.arrow.addEventListener('dblclick', () => hanoi.renderAll());
   },
 
 
-  attach(scriptPath) {
-    let script = document.createElement('script');
-    script.src = scriptPath;
-    script.type = 'module';
-    document.body.append(script);
-  },
+  displayCopyright() {
+    document.querySelector('#copyright').style.visibility = 'visible';
+  }
 }
 
 
