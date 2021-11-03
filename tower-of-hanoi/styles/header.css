@@ -20,6 +20,21 @@
     --fade-text: hsl(228, 6%, 60%);
 }
 
+@font-face {
+    font-family: Nissma;
+    src: url(/fonts/NissmaStandard-Regular.otf);
+}
+
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url(/fonts/MontserratAlternates-Regular.otf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(/fonts/Montserrat-Regular.ttf);
+}
+
 body {
     color: var(--text-color);
     background-color: var(--primary-color);
@@ -38,7 +53,7 @@ body {
 
 #title-div h1 {
     font-family: Nissma;
-    font-size: 4em;
+    font-size: 4.1em;
     color: var(--yellow);
 }
 
@@ -169,7 +184,7 @@ hr {
   
   #copyright p:first-child {
     margin-top: 45px;
-    font-family: 'Open';
+    font-family: serif;
     font-size: 1.3em;
   }
   
