@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+:root {
+    --primary-color: rgb(39, 40, 44);
+    --secondary-color: rgb(29, 30, 33);
+    --input-color: rgb(43, 44, 49);
+    --dim-white: rgba(255, 255, 255, 0.274);
+    --text-color: rgb(255, 255, 255);
+    --red: rgb(255, 93, 93);
+    --blue: rgb(22, 146, 254);
+    --yellow: rgb(255, 210, 104);
+    --green: rgb(54, 210, 145);
+    --dark-green: hsl(155, 63%, 15%);
+    --fade-color: hsl(228, 6%, 25%);
+    --fade-text: hsl(228, 6%, 60%);
+}
+
+@font-face {
+    font-family: Nissma;
+    src: url(/test/fonts/NissmaStandard-Regular.otf);
+}
+
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url(/test/fonts/MontserratAlternates-Regular.otf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(/test/fonts/Montserrat-Regular.ttf);
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    font-family: Montserrat;
+    font-size: 100%;
+}
+
+
+/* * Title Section */
+
+.title {
+    text-align: center;
+    margin: 30px 0 70px 0;
+}
+
+.title > h1 {
+    font-family: Nissma;
+    font-size: 1.8em;
+    color: var(--green);
+    display: inline-block;
+    letter-spacing: 0.1em;
+}
+
+.title > h1::after {
+    content: attr(creator);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    font-family: Montserrat;
+    font-size: 0.45em;
+    color: white;
+    letter-spacing: 0.2em;
+}
+
+
+/* * Input Section */
+
+.input {
+    margin-left: 15px;
+}
+
+.input > div {                       /* For the top input part */
+    margin-bottom: 15px;
+}
+
+.input p {                           /* For the first <p> text */   
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+
+.input #n-value {                /* For the table size inputs */
+    width: 60px;
+    height: 24px;
+    border-radius: 2px;
+    padding-left: 3px;
+}
+
+.input button {
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    width: 70px;
+    height: 28px;
+    background-color: var(--yellow);
+    border-radius: 50px;
+    border: none;
+}
+
+.input button:hover {
+    box-shadow: 0 0 6px hsl(42, 100%, 60%), 0 0 2px hsl(42, 100%, 50%);
+}
+
+.input button:active {
+    /* background-color: hsl(42, 100%, 60%); */
+    transform: scale(0.95,0.95);
+}
+
+.input-hr {
+    margin: 30px 0 30px 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px dashed var(--fade-color);
+}
+
+
+/* * Table Section */
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+    width: 90%;
+    height: 310px;
+    margin-bottom: 40px;
+    border: 1px solid var(--dim-white);
+    text-align: center;
+}
+
+table#grid {
+    margin-bottom: 60px;
+}
+
+td {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--dim-white);
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+hr {
+    margin: 60px 0 60px 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid var(--fade-text);
+}
+
+#init-div button {
+    position: absolute;
+    right: 15px;
+    bottom: 20px;
+    width: 70px;
+    height: 28px;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 50px;
+    border: none;
+}
+
+#init-div button:hover {
+    box-shadow: 0 0 6px hsl(208, 99%, 54%), 0 0 2px hsl(208, 99%, 44%);
+}
+
+#init-div button:active {
+    background-color: hsl(208, 99%, 54%);
+    transform: scale(0.95,0.95);
+}
+
+/* #init {
+    border-collapse: collapse;
+    margin: auto;
+    width: 80%;
+    height: 30%;
+    margin-bottom: 50px;
+    border: 1px solid var(--dim-white);
+}
+
+#init td {
+    width: 35px;
+    height: 65px;
+    border: 1px solid var(--dim-white);
+} */
