@@ -1,6 +1,6 @@
 'use strict';
 
-let n, grid;
+let n, grid, counter = 0;
 let tablenum = 0;
 let survialImg = '<img src="/test2/images/survival.svg"">';
 let birthImg = '<img src="/test2/images/birth.svg"">';
@@ -208,6 +208,8 @@ function gameOfLife(iteration) {
     tablenum++;
     let tableA = makeGrid(grid.length, `${tablenum}a`);
     let tableB = makeGrid(grid.length, `${tablenum}b`);
+
+    document.body.insertAdjacentHTML('beforeend', `<p style="margin: -5px 0 10px 18px; font-size: 0.8em; color: var(--dim-white);">Iteration ${++counter}</p>`);
 
     document.body.append(tableA);
     reflectFate(`${tablenum}a`);
