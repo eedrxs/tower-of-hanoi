@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/test2/game-of-life.css" />
+  <title>Game of Life</title>
+</head>
+
+<body>
+    <script src="/test2/game_of_life.js"></script>
+
+    <!-- Title Section -->
+
+    <div class="title">
+        <h1 creator="by eedris">Game of Life</h1>
+    </div>
+
+
+    <!-- Input section -->
+
+    <div class="input">
+        <div>
+        <p>Input size of n x n table:</p>
+        <input type="number" id="n-value" min="4">
+        </div>
+        <button onclick="getValue()"><b>Create</b></button>
+    </div>
+    <hr class="input-hr">
+
+    <div id="init-div"></div>
+
+</body>
+</html>
